@@ -109,6 +109,7 @@ STATICFILES_FINDERS = (
 SECRET_KEY = ''
 
 AUTHENTICATION_BACKENDS = (
+    'social_auth.backends.facebook.FacebookBackend',
     'locast.auth.backends.LocastEmailBackend',
     'locast.auth.backends.LocastUsernameBackend',
 )
@@ -168,6 +169,7 @@ INSTALLED_APPS = (
     'sorl.thumbnail',
     'traveler',
     'djcelery',
+    'social_auth',
 )
 
 ### LOCAST SETTINGS ###
@@ -177,6 +179,13 @@ APP_LABEL = 'traveler'
 USER_MODEL = 'traveler.LocastUser'
 
 AUTH_PROFILE_MODULE = 'traveler.LocastUserProfile'
+SOCIAL_AUTH_USER_MODEL = USER_MODEL
+
+FACEBOOK_EXTRA_DATA = [
+    ('email', 'email'),
+    ('bio', 'bio'),
+]
+FACEBOOK_EXTENDED_PERMISSIONS = ['email', ]
 
 # Types of user actions, used for UserActivity logging
 USER_ACTIONS = (
@@ -235,4 +244,3 @@ THEME_URL = STATIC_URL + 'themes/' + THEME + '/'
 
 LOGIN_REDIRECT_URL = BASE_URL + '/'
 LOGIN_URL = BASE_URL + '/login/'
-

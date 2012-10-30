@@ -90,3 +90,6 @@ FLOWPLAYER_SWF = 'http://releases.flowplayer.org/swf/flowplayer-3.2.8.swf'
 # Enables google analytics
 GOOGLE_ANALYTICS_ID = None
 
+#Enavles Facebook Login
+FACEBOOK_APP_ID = ''
+FACEBOOK_API_SECRET = ''
